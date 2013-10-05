@@ -39,11 +39,6 @@
 		</div>
 
 		<div class="signin-form-container">
-			<div class="signin-label">
-				Sign In with Venmo
-			</div>
-			<input type="text" class="signin-input">
-			<input type="password" class="signin-input">
 			<div class="signin-submit stage-submit">
 				Sign in
 			</div>
@@ -51,9 +46,12 @@
 
 
 		<div class="picture-container">
+			<div class="picture-label">
+				Take a Picture of the Reciept
+			</div>
 			<form action="/upload" method="post">
-				<input type="file" accept="capture=camera">
-				<input type="submit" url
+				<input type="file" accept="image/*" capture="camera"	>
+				<input type="submit">
 				<div class="signin-submit stage-submit">
 					Submit picture
 				</div>
@@ -81,7 +79,139 @@
 				</div>
 			</div>
 			<div class="receipt-meta">
-				<div class="">
+				<div class="meta-title">
+					Total
+				</div>
+				<div class="meta-value">
+					$133.70
+				</div>
+			</div>
+			<div class="receipt-meta">
+				<div class="meta-title">
+					Tip
+				</div>
+				<div class="meta-value">
+					20%
+				</div>
+			</div>
+
+			<div class="receipt-action">
+				Select Friends
+			</div>
+		</div>
+
+		<div class="friends-container">
+			<div class="friends-title">
+				Select Venmo Friends
+			</div>
+			<div class="friend">
+				<div class="friend-photo">
+				</div>
+				<div class="friend-name">
+					Grace Hopper
+				</div>
+				<div class="friend-selected">
+				</div>
+			</div>
+			<div class="friend">
+				<div class="friend-photo">
+				</div>
+				<div class="friend-name">
+					Peter Norvig
+				</div>
+				<div class="friend-selected">
+				</div>
+			</div>
+
+			<div class="friends-action">
+				Start Splitting
+			</div>
+		</div>
+
+		<div class="claim-container">
+			<div class="receipt-title">
+				Select your order
+			</div>
+			<div class="receipt-subtitle">
+				Grace Hopper
+			</div>
+
+			<div class="receipt-item">
+				<div class="item-name">
+					CALAMARI W/ MOJO
+				</div>
+				<div class="item-cost">
+					$16.00
+				</div>
+			</div>
+			<div class="receipt-item">
+				<div class="item-name">
+					VEGGIE SAND
+				</div>
+				<div class="item-cost">
+					$8.00
+				</div>
+			</div>
+			<div class="receipt-meta">
+				<div class="meta-title">
+					Total
+				</div>
+				<div class="meta-value">
+					$133.70
+				</div>
+			</div>
+
+			<div class="receipt-action">
+				Finish and Pass
+			</div>
+		</div>
+
+		<div class="total-container">
+			<div class="receipt-meta">
+				<div class="meta-title">
+					Total
+				</div>
+				<div class="meta-value">
+					$133.70
+				</div>
+			</div>
+
+			<div class="receipt-meta">
+				<div class="meta-title">
+					Grace Hopper
+				</div>
+				<div class="meta-value">
+					$25.70
+				</div>
+			</div>
+
+			<div class="receipt-meta">
+				<div class="meta-title">
+					Peter Norvig
+				</div>
+				<div class="meta-value">
+					$25.00
+				</div>
+			</div>
+
+
+			<div class="receipt-meta">
+				<div class="meta-title">
+					Balance Remaining 
+				</div>
+				<div class="meta-value">
+					$108.00
+				</div>
+			</div>
+
+			<div class="receipt-action">
+				Finish and Charge
+			</div>
+		</div>
+
+		<div class="confirmation-container">
+			<div class="confirmation-label">
+				Charges Sent
 			</div>
 		</div>
 
