@@ -10,6 +10,13 @@ def image_to_text(image_name, image_dir='uploads'):
         print('Converted %s' % image_path)
         return t.read()
 
+def should_be_period(index,line):
+  return (index < len(line)-3 and index > 1 and 
+  ord("0") <= ord(line[index-1]) and ord(line[index-1]) <= ord("9") and
+  ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9")
+  ord("0") <= ord(line[index+2]) and ord(line[index+2]) <= ord("9"))
+
+
 def parse_receipt(receipt_text):
   receipt_lines = receipt_text.split("\n")
   needed_lines = []
@@ -17,15 +24,18 @@ def parse_receipt(receipt_text):
     hasint = False
     haschar = False
     hasperiod = False
-    for letter in line:
-      if ord(letter) == ord("."):
+    for index in xrange(len(line)):
+      if ord(line[index]) == ord("."):
         hasperiod = True
-      elif ord("0") <= ord(letter) and ord(letter) <= ord("9"):
+      if should_be_period(index,line):
+        line = line[0:index] + "." + line[index+1:]
+        hasperiod = True
+      elif ord("0") <= ord(line[index]) and ord(line[index]) <= ord("9"):
         hasint = True
-      elif (ord("a") <= ord(letter) and ord(letter) <= ord("z") or
-           ord("A") <= ord(letter) and ord(letter) <= ord("Z")):
+      elif (ord("a") <= ord(line[index]) and ord(line[index]) <= ord("z") or
+           ord("A") <= ord(line[index]) and ord(line[index]) <= ord("Z")):
         haschar = True
-    if (haschar and hasperiod and hasint):
+    if (haschar and hasperiod and hasint and not "TOTAL" in line.upper()):
       needed_lines.append(line)
   result = [0]*len(needed_lines)
   count = 0
@@ -43,16 +53,12 @@ def parse_receipt(receipt_text):
             ord(line[index + 1 + right_digits_found]) <= ord("9")):
             right_digits_found += 1
         for i in xrange(right_digits_found):
-          tempprice += int(line[index+1+i])*10**(right_digits_found-i)
+          tempprice += int(line[index+1+i])*10**(right_digits_found-i-1)
         price_search_left = 1
         while (price_search_left <= index and
             ord("0") <= ord(line[index-price_search_left]) and
             ord(line[index-price_search_left]) <= ord("9")):
-          exp = price_search_left + right_digits_found
-          if not (ord("0") <= ord(line[index-price_search_left])):
-            return "here I am!!"
-          if not (ord("9") >= ord(line[index-price_search_left])):
-            return "rock me like a hurricane!!"
+          exp = price_search_left + right_digits_found - 1
           tempprice += int(line[index-price_search_left])*10**exp
           price_search_left += 1
     result[count] = dict()
