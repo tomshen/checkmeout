@@ -1,0 +1,4 @@
+checkmeout
+==========
+
+Clever check splitting
