@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 from flaskext.uploads import UploadSet, IMAGES, configure_uploads
 
-from tesseract import parse_receipt
+# from tesseract import parse_receipt
 app = Flask(__name__)
 app.config.update(
     DEBUG               = True,
@@ -18,7 +18,7 @@ def home():
 def upload():
     if request.method == 'POST' and 'receipt' in request.files:
         filename = receipts.save(request.files['receipt'])
-        return jsonify({ 'items': parse_receipt(filename) })
+        return 'Not implemented' # jsonify({ 'items': parse_receipt(filename) })
     return 'No receipt image found.', 400
 
 if __name__ == '__main__':
