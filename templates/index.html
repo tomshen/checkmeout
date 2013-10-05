@@ -1,227 +1,269 @@
 <!DOCTYPE>
 <html>
 <head>
-	<title>Check Me Out!</title>
+  <title>Check Me Out!</title>
 
-	<!-- homescreen icon -->
-	<link rel="apple-touch-icon" href="img/icon.png"/>
+  <!-- homescreen icon -->
+  <link rel="apple-touch-icon" href="img/icon.png"/>
 
-	<!-- splash screen -->
-	<link rel="apple-touch-startup-image" href="img/splash.png" /> 
+  <!-- splash screen -->
+  <link rel="apple-touch-startup-image" href="img/splash.png" /> 
 
-	<!-- allows app to be a web app -->
-	<meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <!-- allows app to be a web app -->
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
 
-	<!-- styles the notif. bar -->
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" />  	
+  <!-- styles the notif. bar -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />   
 
-	<!-- stops people from zooming -->
-	<meta name="viewport" content = "width = device-width, initial-scale = 2.3, user-scalable = no" />  
+  <!-- stops people from zooming -->
+  <meta name="viewport" content = "width = device-width, initial-scale = 2.3, user-scalable = no" />  
 
-	<!-- Typekit embed code -->
-	<script type="text/javascript" src="//use.typekit.net/dpy8sot.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <!-- Typekit embed code -->
+  <script type="text/javascript" src="//use.typekit.net/dpy8sot.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
-	<!-- css -->
+  <!-- css -->
 
-	<link rel="stylesheet" type="text/css" href="static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.3/normalize.min.css">
 
-	<!-- lib -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+  <!-- lib -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
 
 </head>
 <body>
-	<div class="signin-container">
-
-		<div class="logo">
-			Check Me Out
-		</div>
-
-		<div class="signin-form-container">
-			<div class="signin-submit stage-submit">
-				Sign in
-			</div>
-		</div>
+  <div class="signin-container" id="signin">
+    <div class="logo">
+      Check Me Out
+    </div>
+    <div class="signin-submit stage-submit">
+      Sign in
+    </div>
+  </div>
 
 
-		<div class="picture-container">
-			<div class="picture-label">
-				Take a Picture of the Reciept
-			</div>
-			<form action="/upload" method="post">
-				<input type="file" accept="image/*" capture="camera"	>
-				<input type="submit">
-				<div class="signin-submit stage-submit">
-					Submit picture
-				</div>
-			</form>
-		</div>
+  <div class="picture-container" id="picture">
+    <div class="picture-label">
+      Take a Picture of the Reciept
+    </div>
+    <form action="/upload" method="post">
+      <input type="file" accept="image/*" capture="camera"  >
+      <input type="submit">
+      <div class="signin-submit stage-submit">
+        Submit picture
+      </div>
+    </form>
+  </div>
 
-		<div class="verify-container">
-			<div class="receipt-title">
-				Verify
-			</div>
-			<div class="receipt-item">
-				<div class="item-name">
-					CALAMARI W/ MOJO
-				</div>
-				<div class="item-cost">
-					$16.00
-				</div>
-			</div>
-			<div class="receipt-item">
-				<div class="item-name">
-					VEGGIE SAND
-				</div>
-				<div class="item-cost">
-					$8.00
-				</div>
-			</div>
-			<div class="receipt-meta">
-				<div class="meta-title">
-					Total
-				</div>
-				<div class="meta-value">
-					$133.70
-				</div>
-			</div>
-			<div class="receipt-meta">
-				<div class="meta-title">
-					Tip
-				</div>
-				<div class="meta-value">
-					20%
-				</div>
-			</div>
-
-			<div class="receipt-action">
-				Select Friends
-			</div>
-		</div>
-
-		<div class="friends-container">
-			<div class="friends-title">
-				Select Venmo Friends
-			</div>
-			<div class="friend">
-				<div class="friend-photo">
-				</div>
-				<div class="friend-name">
-					Grace Hopper
-				</div>
-				<div class="friend-selected">
-				</div>
-			</div>
-			<div class="friend">
-				<div class="friend-photo">
-				</div>
-				<div class="friend-name">
-					Peter Norvig
-				</div>
-				<div class="friend-selected">
-				</div>
-			</div>
-
-			<div class="friends-action">
-				Start Splitting
-			</div>
-		</div>
-
-		<div class="claim-container">
-			<div class="receipt-title">
-				Select your order
-			</div>
-			<div class="receipt-subtitle">
-				Grace Hopper
-			</div>
-
-			<div class="receipt-item">
-				<div class="item-name">
-					CALAMARI W/ MOJO
-				</div>
-				<div class="item-cost">
-					$16.00
-				</div>
-			</div>
-			<div class="receipt-item">
-				<div class="item-name">
-					VEGGIE SAND
-				</div>
-				<div class="item-cost">
-					$8.00
-				</div>
-			</div>
-			<div class="receipt-meta">
-				<div class="meta-title">
-					Total
-				</div>
-				<div class="meta-value">
-					$133.70
-				</div>
-			</div>
-
-			<div class="receipt-action">
-				Finish and Pass
-			</div>
-		</div>
-
-		<div class="total-container">
-			<div class="receipt-meta">
-				<div class="meta-title">
-					Total
-				</div>
-				<div class="meta-value">
-					$133.70
-				</div>
-			</div>
-
-			<div class="receipt-meta">
-				<div class="meta-title">
-					Grace Hopper
-				</div>
-				<div class="meta-value">
-					$25.70
-				</div>
-			</div>
-
-			<div class="receipt-meta">
-				<div class="meta-title">
-					Peter Norvig
-				</div>
-				<div class="meta-value">
-					$25.00
-				</div>
-			</div>
+  <div class="verify-container" id="verify">
+  </div>
 
 
-			<div class="receipt-meta">
-				<div class="meta-title">
-					Balance Remaining 
-				</div>
-				<div class="meta-value">
-					$108.00
-				</div>
-			</div>
-
-			<div class="receipt-action">
-				Finish and Charge
-			</div>
-		</div>
-
-		<div class="confirmation-container">
-			<div class="confirmation-label">
-				Charges Sent
-			</div>
-		</div>
+  <div class="friends-container" id="friends">
+  </div>
 
 
-	</div>
+  <div class="claim-container" id="claim">
+  </div>
 
 
-	<!-- templates -->
 
-	<!-- js -->
-	<script type="text/javascript" rel="static/js/app.js"></script>
+  <div class="total-container" id="total">
+  </div>
+
+  <div class="confirmation-container" id="confirm">
+    <div class="confirmation-label">
+      Charges Sent
+    </div>
+    <div class="confirmation-label">
+      start again
+    </div>
+  </div>
+
+
+
+  <!-- templates -->
+
+
+  <!--  Template for verifying the scan of the receipt
+
+        should be placed inside a div with the class
+        verify-container"
+
+        takes an object with two keys,
+
+        "items" -- a list of item objects
+            each item object contains a "name" and a "cost", cost is formatted as a string like '$15.34'.
+
+        "total" the total balance remaining on the tab
+    -->
+  <script type="text/template" id="template-venmo-friends">
+    <div class="receipt-title">
+      Verify
+    </div>
+    <% for (var i = 0; i < items.length; i++) { %>
+      <% var item = items[i]; %>
+      <div class="receipt-item">
+        <div class="item-name">
+          <%= item.name %>
+        </div>
+        <div class="item-cost">
+          <%= item.cost %>
+        </div>
+      </div>
+    <% }; %>
+    <div class="receipt-meta">
+      <div class="meta-title">
+        Total
+      </div>
+      <div class="meta-value">
+        <%= total %>
+      </div>
+    </div>
+
+    <div class="receipt-action">
+      Select Friends
+    </div>
+  </script>
+
+
+
+  <!--  the template for the venmo friends selection
+        screen 
+
+        should be placed in a div with the class
+        "friends-container"
+
+        Takes an object with a key "friends"
+        that leads to an array of friend objects
+        each with a key for the "url" of a photo,
+        their formatted "name", and a boolean "selected"
+    -->
+  <script type="text/template" id="template-venmo-friends">
+      <div class="friends-title">
+        Select Venmo Friends
+      </div>
+      <% for(var i = 0; i < friends.legnth; i++) { %>
+        <% var friend = friends[i] %>
+        <div class="friend">
+          <div class="friend-photo">
+            <img src="<%= friend.url %>">
+          </div>
+          <div class="friend-name">
+            <%= friend.name %>
+          </div>
+          <div class="friend-selected <% if(friend.selected) print('is-selected') %> ">
+          </div>
+        </div>
+
+      <% } %>
+
+      <div class="friends-action">
+        Start Splitting
+      </div>
+  </script>
+
+  <!--  Template for claiming items on the receipt
+
+        should be placed inside a div with the class
+        "claim-container"
+
+        takes an object with three keys,
+
+        "currentUser" -- the name of the person currently making the claim.
+
+        "items" -- a list of item objects
+            each item object contains a "name" and a "cost", cost is formatted as a string like '$15.34'.
+
+        "total" the total balance remaining on the tab
+    -->
+  <script type="text/template" id="template-venmo-friends">
+    <div class="receipt-title">
+      Select your order
+    </div>
+    <div class="receipt-subtitle">
+      <%= currentUser %>
+    </div>
+    <% for (var i = 0; i < items.length; i++) { %>
+      <% var item = items[i]; %>
+      <div class="receipt-item">
+        <div class="item-name">
+          <%= item.name %>
+        </div>
+        <div class="item-cost">
+          <%= item.cost %>
+        </div>
+      </div>
+    <% }; %>
+    <div class="receipt-meta">
+      <div class="meta-title">
+        Total
+      </div>
+      <div class="meta-value">
+        <%= total %>
+      </div>
+    </div>
+
+    <div class="receipt-action">
+      Finish and Pass
+    </div>
+  </script>
+
+
+  <!--  Template for displaying the total amounts claimed by each
+        person
+
+        should be placed inside a div with the class
+        "total-container"
+
+        takes an object with three keys,
+
+        "originalTotal" -- the total cost of the bill
+
+        "claimTotals" -- a list of claim objects
+            each claim object contains a "name" and a "cost", cost is formatted as a string like '$15.34'.
+
+        "remainingTotal" the total balance remaining on the tab
+    -->
+  <script type="text/template" id="template-venmo-friends">
+    <div class="receipt-meta">
+      <div class="meta-title">
+        Total
+      </div>
+      <div class="meta-value">
+        <%= total %>
+      </div>
+    </div>
+
+    <% for (var i = 0; i < claimTotals.length; i++) { %>
+      <% var claim = claimTotals[i]; %>
+      <div class="receipt-meta">
+        <div class="meta-title">
+          <%= claim.name %>
+        </div>
+        <div class="meta-value">
+          <%= claim.cost %>
+        </div>
+      </div>
+    <% }; %>
+
+    <div class="receipt-meta">
+      <div class="meta-title">
+        Balance Remaining 
+      </div>
+      <div class="meta-value">
+        <%= remainingTotal %>
+      </div>
+    </div>
+
+    <div class="receipt-action">
+      Finish and Charge
+    </div>
+  </script>
+
+  <!-- js -->
+  <script type="text/javascript" rel="static/js/app.js"></script>
 </body>
 </html>
