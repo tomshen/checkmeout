@@ -104,7 +104,7 @@ body {
 .receipt-item {
   line-height: 1.5; }
   .receipt-item .item-name {
-    width: 194px;
+    width: 200px;
     float: left; }
   .receipt-item .item-cost {
     float: right;
@@ -140,7 +140,7 @@ body {
 
 .friend-name {
   line-height: 2;
-  width: 232px;
+  width: 226px;
   float: left; }
 
 .friend-selected {
