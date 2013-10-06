@@ -104,7 +104,7 @@ body {
 .receipt-item {
   line-height: 1.5; }
   .receipt-item .item-name {
-    width: 200px;
+    width: 194px;
     float: left; }
   .receipt-item .item-cost {
     float: right;
