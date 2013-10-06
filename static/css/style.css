@@ -27,14 +27,14 @@ body {
   background: #5cc353; }
 
 .container {
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   position: absolute; }
 
 .container.is-hidden {
   top: -100%; }
 
-.title-container {
+.signin-container {
   text-align: center;
   position: absolute;
   top: 40%;
@@ -50,6 +50,11 @@ body {
   color: #dafad6;
   font-size: 16px;
   margin-top: 8px;
+  text-decoration: none; }
+
+.picture-submit {
+  display: block;
+  color: #0e0d16;
   text-decoration: none; }
 
 .verify-container, .friends-container, .claim-container, .total-container, .confirmation-container {
@@ -85,7 +90,41 @@ body {
   font-size: 20px;
   margin-top: 8px;
   text-align: right;
-  color: #5cc353; }
+  color: #5cc353;
+  text-decoration: none;
+  display: block; }
 
 .receipt-action:after {
   content: "→"; }
+
+.friend {
+  margin-bottom: 4px; }
+
+.friend-photo {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  float: left; }
+
+.friend-photo > img {
+  width: 30px;
+  vertical-align: middle; }
+
+.friend-name {
+  line-height: 2;
+  width: 232px;
+  float: left; }
+
+.friend-selected {
+  width: 19px;
+  height: 19px;
+  font-size: 19px;
+  float: left;
+  text-align: center;
+  border: 1px solid #0e0d16;
+  margin-left: 8px;
+  margin-top: 4px; }
+
+.friend-selected.is-selected:before {
+  content: "x";
+  line-height: 0.9; }
