@@ -103,22 +103,22 @@
     -->
   <script type="text/template" id="template-verify">
     <div class="receipt-title">
-      Verify
+      verify your charges
     </div>
     <% for (var i = 0; i < items.length; i++) { %>
       <% var item = items[i]; %>
-      <div class="receipt-item cf">
-        <div class="item-name">
+      <div class="receipt-item cf ">
+        <div class="item-name" contenteditable="true">
           <%= item.name %>
         </div>
-        <div class="item-cost">
+        <div class="item-cost" contenteditable="true">
           <%= item.price %>
         </div>
       </div>
     <% } %>
     <div class="receipt-item total cf">
       <div class="item-name">
-        Total
+        ###Total###
       </div>
       <div class="item-cost">
         <%= total %>
@@ -126,7 +126,7 @@
     </div>
 
     <a class="receipt-action" href="#">
-      Select Friends
+      select friends
     </a>
   </script>
 
@@ -145,7 +145,7 @@
     -->
   <script type="text/template" id="template-venmo-friends">
     <div class="receipt-title"> ".id"
-      Select Venmo Friends
+      select venmo friends
     </div>
     <% for (var i = 0; i < venmoFriends.length; i++) { %>
 
@@ -164,7 +164,7 @@
     <% } %>
 
     <a class="receipt-action" href="#">
-      Start Splitting
+      start splitting
     </a>
   </script>
 
@@ -184,7 +184,7 @@
     -->
   <script type="text/template" id="template-claim">
     <div class="receipt-title">
-      Select your order
+      select your order
     </div>
     <div class="receipt-subtitle">
       <%= currentUser %>
@@ -202,7 +202,7 @@
     <% }; %>
     <div class="receipt-item total cf">
       <div class="item-name">
-        Total
+        ### Total ###
       </div>
       <div class="item-cost">
         <%= total %>
@@ -210,7 +210,7 @@
     </div>
 
     <a class="receipt-action" href="#">
-      Finish and Pass
+      finish and pass
     </a>
   </script>
 
@@ -233,7 +233,7 @@
   <script type="text/template" id="template-total">
     <div class="receipt-item cf">
       <div class="item-name">
-        Total
+        ### Total ###
       </div>
       <div class="item-cost">
         <%= total %>
@@ -254,7 +254,7 @@
 
     <div class="receipt-item cf">
       <div class="item-name">
-        Balance Remaining 
+        ### Balance Remaining ###
       </div>
       <div class="item-cost">
         <%= remainingTotal %>
@@ -262,7 +262,7 @@
     </div>
 
     <a class="receipt-action" href="#">
-      Finish and Charge
+      finish and charge
     </a>
   </script>
 
