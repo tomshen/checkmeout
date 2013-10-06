@@ -34,15 +34,14 @@
 </head>
 <body>
   <div class="content-container">
-
     <div class="title-container">
-
       <div class="signin-container container" id="signin">
         <div class="logo">
           &cent;heck me out
         </div>
         <a href="#" class="signin-button">
           -&thinsp;$ign in with Venmo&thinsp;-
+        </a>
         </div>
       </div>
     </div>
@@ -65,7 +64,7 @@
     </div>
 
 
-    <div class="friends-container container is-hidden" id="friends">
+    <div class="friends-container container  is-hidden" id="friends">
     </div>
 
 
@@ -147,7 +146,7 @@
         their formatted "name", and a boolean "selected"
     -->
   <script type="text/template" id="template-venmo-friends">
-    <div class="friends-title">
+    <div class="receipt-title">
       Select Venmo Friends
     </div>
     <% console.log(venmoFriends) %>
@@ -168,7 +167,7 @@
 
     <% } %>
 
-    <div class="friends-action">
+    <div class="receipt-action">
       Start Splitting
     </div>
   </script>
