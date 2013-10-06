@@ -13,11 +13,12 @@ def image_to_text(image_name, image_dir='uploads'):
 def should_be_period(index,line):
   return (index < len(line)-3 and index > 1 and 
   ord("0") <= ord(line[index-1]) and ord(line[index-1]) <= ord("9") and
-  ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9")
+  ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9") and
   ord("0") <= ord(line[index+2]) and ord(line[index+2]) <= ord("9"))
 
 
-def parse_receipt(receipt_text):
+def parse_receipt(image_name):
+  receipt_text = image_to_text(image_name)
   receipt_lines = receipt_text.split("\n")
   needed_lines = []
   for line in receipt_lines:
@@ -54,6 +55,8 @@ def parse_receipt(receipt_text):
             right_digits_found += 1
         for i in xrange(right_digits_found):
           tempprice += int(line[index+1+i])*10**(right_digits_found-i-1)
+        if right_digits_found ==0:
+          right_digits_found = 2 # help set the place for the exponent
         price_search_left = 1
         while (price_search_left <= index and
             ord("0") <= ord(line[index-price_search_left]) and
