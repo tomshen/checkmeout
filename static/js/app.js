@@ -13,7 +13,7 @@ function signin() {
 
 function picture() {
   $('#picture').removeClass('is-hidden');
-  $('.signin-submit').click(function () {
+  $('.picture-submit').click(function () {
     $.ajax({
       url: '/upload',
       data: new FormData($('#image-upload')[0]),
@@ -43,7 +43,7 @@ function convertItems(items) {
   return _.map(items, function (item) {
     item.price = convertPrice(item.price);
     return item;
-  })
+  });
 }
 
 function verify(items) {
@@ -58,12 +58,36 @@ function verify(items) {
     total: convertPrice(total)
   }));
 
-  friends(items, total);
+  $('.receipt-action').click(function () {
+    friends(items, total);
+  });
 }
 
 function friends(items, total) {
   $('#verify').addClass('is-hidden');
+  $('#friends').removeClass('is-hidden');
+
+  venmo.friends(function (friends) {
+    var friendsTemplate = _.template($('#template-venmo-friends').html());
+    console.log(friends);
+    $('#friends').html(friendsTemplate({ venmoFriends: friends }));
+    $('.friend').click(function () {
+      $(this).toggleClass('is-selected');
+    });
+
+    $('.receipt-action').click(function () {
+      var selectedFriends = _.map($('.friend.is-selected'), function(e) {
+        $(e).data();
+        return $.data(e, 'userId')
+      });
+      claim(selectedFriends, items, total);
+    });
+  });
+}
+
+function claim(selectedFriends, items, total) {
   $('#friends').addClass('is-hidden');
+  $('#claim').removeClass('is-hidden');
 }
 
 signin();
