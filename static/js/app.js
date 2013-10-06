@@ -28,7 +28,7 @@ function picture() {
   });
 }
 
-function convertPrice(price) {
+function intToPrice(price) {
   var p = price.toString(10);
   if (p.length === 0)
     return '$0.00';
@@ -39,9 +39,13 @@ function convertPrice(price) {
   return '$' + p.slice(0, p.length - 2) + '.' + p.slice(p.length - 2);
 }
 
+function priceToInt(price) {
+  return parseInt(price.replace(/\D/g,''), 10);
+}
+
 function convertItems(items) {
   return _.map(items, function (item) {
-    item.price = convertPrice(item.price);
+    item.price = intToPrice(item.price);
     return item;
   });
 }
@@ -55,10 +59,19 @@ function verify(items) {
   var verifyTemplate = _.template($('#template-verify').html());
   $('#verify').html(verifyTemplate({
     items: convertItems(items),
-    total: convertPrice(total)
+    total: intToPrice(total)
   }));
 
   $('.receipt-action').click(function () {
+    var ri = $('.receipt-item');
+    var total = 0;
+    items = _.map(ri.slice(0, ri.length - 1), function (itemNode) {
+      var i = {};
+      i.name = itemNode.childNodes[1].innerHTML.trim();
+      i.price = priceToInt(itemNode.childNodes[3].innerHTML);
+      total += i.price;
+      return i;
+    });
     friends(items, total);
   });
 }
