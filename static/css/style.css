@@ -1,2 +1,24 @@
 body {
-  color: black; }
+  color: #0e0d16;
+  font-family: "american typewriter", "Courier New", monospace;
+  background: #5cc353; }
+
+.signin-container {
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0; }
+
+.is-hidden {
+  display: none; }
+
+.logo {
+  font-family: "jubilat", sans-serif;
+  font-weight: 500;
+  font-size: 36px; }
+
+.signin-button {
+  color: #dafad6;
+  font-size: 16px;
+  margin-top: 8px; }

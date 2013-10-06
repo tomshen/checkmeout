@@ -1,4 +1,39 @@
-body {
+$title-type: "jubilat", sans-serif;
+$body-type: "american typewriter", "Courier New", monospace;
 
-	color: black;
+
+$primary-color: #5CC353;
+
+$text-color: #0E0D16;
+$secondary-text-color: #DAFAD6;
+
+
+body {
+	color: $text-color;
+	font-family: $body-type;
+	background: $primary-color;
+}
+
+.signin-container {
+	text-align: center;
+	position: absolute;
+	top: 40%;
+	left: 0;
+	right: 0;
+}
+
+.is-hidden {
+	display:none;
+}
+
+.logo {
+	font-family: $title-type;
+	font-weight: 500;
+	font-size: 36px;
+}
+
+.signin-button {
+	color: $secondary-text-color;
+	font-size: 16px;
+	margin-top: 8px;
 }

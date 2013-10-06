@@ -31,20 +31,21 @@
   <!-- lib -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+  <script src="static/js/venmo.js"></script>
 
 </head>
 <body>
-  <div class="signin-container" id="signin">
+  <div class="signin-container container" id="signin">
     <div class="logo">
-      Check Me Out
+      &cent;heck me out
     </div>
-    <div class="signin-submit stage-submit">
-      Sign in
+    <div class="signin-button">
+      -&thinsp;$ign in with Venmo&thinsp;-
     </div>
   </div>
 
 
-  <div class="picture-container" id="picture">
+  <div class="picture-container container is-hidden" id="picture">
     <div class="picture-label">
       Take a Picture of the Reciept
     </div>
@@ -57,23 +58,23 @@
     </form>
   </div>
 
-  <div class="verify-container" id="verify">
+  <div class="verify-container container is-hidden" id="verify">
   </div>
 
 
-  <div class="friends-container" id="friends">
+  <div class="friends-container container is-hidden" id="friends">
   </div>
 
 
-  <div class="claim-container" id="claim">
+  <div class="claim-container container is-hidden" id="claim">
   </div>
 
 
 
-  <div class="total-container" id="total">
+  <div class="total-container container is-hidden" id="total">
   </div>
 
-  <div class="confirmation-container" id="confirm">
+  <div class="confirmation-container container is-hidden" id="confirm">
     <div class="confirmation-label">
       Charges Sent
     </div>
@@ -99,7 +100,7 @@
 
         "total" the total balance remaining on the tab
     -->
-  <script type="text/template" id="template-venmo-friends">
+  <script type="text/template" id="template-verify">
     <div class="receipt-title">
       Verify
     </div>
@@ -113,7 +114,7 @@
           <%= item.cost %>
         </div>
       </div>
-    <% }; %>
+    <% } %>
     <div class="receipt-meta">
       <div class="meta-title">
         Total
@@ -136,33 +137,36 @@
         should be placed in a div with the class
         "friends-container"
 
-        Takes an object with a key "friends"
+        Takes an object with a key "venmoFriends"
         that leads to an array of friend objects
         each with a key for the "url" of a photo,
         their formatted "name", and a boolean "selected"
     -->
   <script type="text/template" id="template-venmo-friends">
-      <div class="friends-title">
-        Select Venmo Friends
-      </div>
-      <% for(var i = 0; i < friends.legnth; i++) { %>
-        <% var friend = friends[i] %>
-        <div class="friend">
-          <div class="friend-photo">
-            <img src="<%= friend.url %>">
-          </div>
-          <div class="friend-name">
-            <%= friend.name %>
-          </div>
-          <div class="friend-selected <% if(friend.selected) print('is-selected') %> ">
-          </div>
+    <div class="friends-title">
+      Select Venmo Friends
+    </div>
+    <% console.log(venmoFriends) %>
+    <% for (var i = 0; i < venmoFriends.length; i++) { %>
+
+      <% var venmoFriend = venmoFriends[i] %>
+      <% console.log(venmoFriend) %>
+      <div class="friend">
+        <div class="friend-photo">
+          <img src="<%= venmoFriend.url %>">
         </div>
-
-      <% } %>
-
-      <div class="friends-action">
-        Start Splitting
+        <div class="friend-name">
+          <%= venmoFriend.name %>  
+        </div>
+        <div class="friend-selected <% if(venmoFriend.selected) print('is-selected') %> ">
+        </div>
       </div>
+
+    <% } %>
+
+    <div class="friends-action">
+      Start Splitting
+    </div>
   </script>
 
   <!--  Template for claiming items on the receipt
@@ -179,7 +183,7 @@
 
         "total" the total balance remaining on the tab
     -->
-  <script type="text/template" id="template-venmo-friends">
+  <script type="text/template" id="template-claim">
     <div class="receipt-title">
       Select your order
     </div>
@@ -227,7 +231,7 @@
 
         "remainingTotal" the total balance remaining on the tab
     -->
-  <script type="text/template" id="template-venmo-friends">
+  <script type="text/template" id="template-total">
     <div class="receipt-meta">
       <div class="meta-title">
         Total
