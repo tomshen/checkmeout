@@ -1,5 +1,6 @@
-from PIL import Image
+from PIL import Image,ImageEnhance
 im = Image.open("uploads/test07.jpg")
-im = im.convert('1')
+enhancer = ImageEnhance.Color(im)
+im = enhancer.enhance(0.0)
 im.save("uploads/test08.jpg")
 
