@@ -1,6 +1,8 @@
 from flask import Flask, render_template, jsonify, request
 from flaskext.uploads import UploadSet, IMAGES, configure_uploads
 
+from venmo import Venmo
+
 # from tesseract import parse_receipt
 app = Flask(__name__)
 app.config.update(
@@ -21,5 +23,21 @@ def upload():
         return 'Not implemented' # jsonify({ 'items': parse_receipt(filename) })
     return 'No receipt image found.', 400
 
+# Venmo API endpoint wrapper
+@app.route('/venmo/me')
+def venmo_me():
+    return jsonify(Venmo(request.args['access_token']).user())
+@app.route('/venmo/me/friends')
+def venmo_me_friends():
+    return jsonify({ 'friends': Venmo(request.args['access_token']).friends() })
+@app.route('/venmo/users/<user_id>')
+def venmo_user(user_id):
+    return jsonify(Venmo(request.args['access_token']).user(user_id))
+@app.route('/venmo/users/<user_id>/friends')
+def venmo_user_friends(user_id):
+    return jsonify({ 'friends': Venmo(request.args['access_token']).friends(user_id) })
+@app.route('/venmo/pay', methods=['POST'])
+def venmo_pay():
+    return jsonify(Venmo(request.args['access_token'].pay(request.args)))
 if __name__ == '__main__':
     app.run()
