@@ -12,8 +12,8 @@ def image_to_text(image_name, image_dir='uploads'):
 
 def should_be_period(index,line):
   return (index < len(line)-2 and index > 1 and 
-  ord("0") <= ord(line[index-1]) and ord(line[index-1]) <= ord("9") and
-  ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9"))
+  (ord("0") <= ord(line[index-1]) and ord(line[index-1]) <= ord("9")) and
+  (ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9")))
 
 def replace_s(index,line):
   if not (ord(line[index]) == ord('s') or ord(line[index]) == ord('S')):
@@ -21,10 +21,21 @@ def replace_s(index,line):
   if index == len(line)-1:
     return ord("0") <= ord(line[index-1]) and ord(line[index-1]) <= ord("9")
   elif index == 0:
-    ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9")
+    return ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9")
   else:
     return ((ord("0") <= ord(line[index-1]) and ord(line[index-1]) <= ord("9"))
         or (ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9")))
+
+def replace_six(index,line):
+  if not (ord(line[index]) == ord('6')):
+    return False
+  elif index == 0:
+    return (ord("A") <= ord(line[index+1]) and ord(line[index+1]) <= ord("Z")
+       or (ord("a") <= ord(line[index+1]) and ord(line[index+1]) <= ord("z")))
+  else:
+    return (ord("A") <= ord(line[index-1]) and ord(line[index-1]) <= ord("Z")
+       or (ord("a") <= ord(line[index-1]) and ord(line[index-1]) <= ord("z")))
+
 
 def parse_receipt(image_name):
   receipt_text = image_to_text(image_name)
@@ -43,12 +54,15 @@ def parse_receipt(image_name):
       if replace_s(index,line):
         line = line[0:index] + "5" + line[index+1:]
         hasint = True
+      if replace_six(index,line):
+        line = line[0:index] + "G" + line[index+1:]
+        haschar = True
       elif ord("0") <= ord(line[index]) and ord(line[index]) <= ord("9"):
         hasint = True
       elif (ord("a") <= ord(line[index]) and ord(line[index]) <= ord("z") or
            ord("A") <= ord(line[index]) and ord(line[index]) <= ord("Z")):
         haschar = True
-    if (haschar and hasperiod and hasint and not "TOTAL" in line.upper()):
+    if (haschar and hasperiod and hasint and not "TOT" in line.upper()):
       needed_lines.append(line)
   result = [0]*len(needed_lines)
   count = 0
@@ -62,10 +76,8 @@ def parse_receipt(image_name):
             ord("A") <= ord(line[index]) and ord(line[index]) <= ord("Z")
             and not item_written):
         item_written = True
-        print "called tho"
         for temp_index in xrange(index,len(line)):
           if (ord('0') <= ord(line[temp_index]) <= ord('9')):
-            print "got to dis part doe"
             break
           else:
             tempitem += line[temp_index]
