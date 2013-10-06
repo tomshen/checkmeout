@@ -13,10 +13,10 @@ function signin() {
 
 function picture() {
   $('#picture').removeClass('is-hidden');
-  $('#image-upload').onchange = function () {
+  $('#image-upload').change(function () {
     alert(this.value);
-  }
-  
+  });
+
   $('.picture-submit').click(function () {
     $.ajax({
       url: '/upload',
