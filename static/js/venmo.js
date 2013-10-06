@@ -24,7 +24,7 @@ var Venmo = function (clientId, scope) {
   }
 
   function _failure(res, status) {
-    console.err(http.status + ': ' + http.responseText);
+    console.error(status + ': ' + res);
   }
 
   function post(path, params, success, failure) {
@@ -44,13 +44,11 @@ var Venmo = function (clientId, scope) {
     http.send(params);
   }
 
-  function get(path, params, success, failure) {
-    failure = optionalArg(failure, _failure);
+  function get(path, params, callback) {
     var http = new XMLHttpRequest();
     http.open('GET', path + '?' + serialize(params), false);
     http.send(null);
-    if (success && http.status === 200) return success(http.responseText, http.status);
-    else if (failure) return failure(http.responseText, http.status);
+    callback(JSON.parse(http.responseText), http.status);
   }
 
   function authorize() {
@@ -75,43 +73,39 @@ var Venmo = function (clientId, scope) {
     });
   }
 
-  function friends(userId) {
-    var path = endpoint + '/users/' + optionalArg(userId, user()[id])
-             + '/friends';
+  function friends(callback, userId) {
+    var path = endpoint + '/users/' + userId + '/friends';
+    if (arguments.length < 2)
+      path = endpoint + '/me/friends';
     var params = { access_token: accessToken };
-    if (limit) params['limit'] = limit;
-    if (after) params['after'] = after;
-    if (before) params['before'] = before;
-    return get(path, params, function (res) {
-      return res; // TODO: handle pagination
+    get(path, params, function (res) {
+      callback(res.friends); // TODO: handle pagination
     });
   }
 
-  function pay(userId, note, amount, audience) {
-    audience = optionalArg(audience, 'friends');
-
+  function pay(callback, userId, note, amount) {
     var path = endpoint + '/payments';
     var params = {
       access_token: accessToken,
       user_id: userId,
       note: note,
       amount: amount,
-      audience: audience
+      audience: 'friends'
     };
-    return post(path, params, function (res) { return res; });
+    return post(path, params, function (res) { return callback(res); });
   }
 
-  function charge(userId, note, amount, audience) {
+  function charge(userId, note, amount, callback) {
     // charge is same as pay with negative amount
-    return pay(userId, note, '-' + amount.toString(), audience);
+    return pay(userId, note, '-' + amount.toString(), callback);
   }
 
   function payments(limit, after, before) {
     var path = endpoint + '/payments';
     var params = { access_token: accessToken };
-    if (limit) params['limit'] = limit;
-    if (after) params['after'] = after;
-    if (before) params['before'] = before;
+    if (arguments.length >= 1) params['limit'] = limit;
+    if (arguments.length >= 2) params['after'] = after;
+    if (arguments.length >= 3) params['before'] = before;
     return post(path, params, function (res) { return res; });
   }
 
