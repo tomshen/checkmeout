@@ -147,11 +147,9 @@
     <div class="receipt-title">
       Select Venmo Friends
     </div>
-    <% console.log(venmoFriends) %>
     <% for (var i = 0; i < venmoFriends.length; i++) { %>
 
       <% var venmoFriend = venmoFriends[i] %>
-      <% console.log(venmoFriend) %>
       <div class="friend cf">
         <div class="friend-photo">
           <img src="<%= venmoFriend.profile_picture_url %>">
