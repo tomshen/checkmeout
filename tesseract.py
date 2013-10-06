@@ -11,11 +11,20 @@ def image_to_text(image_name, image_dir='uploads'):
         return t.read()
 
 def should_be_period(index,line):
-  return (index < len(line)-3 and index > 1 and 
+  return (index < len(line)-2 and index > 1 and 
   ord("0") <= ord(line[index-1]) and ord(line[index-1]) <= ord("9") and
-  ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9") and
-  ord("0") <= ord(line[index+2]) and ord(line[index+2]) <= ord("9"))
+  ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9"))
 
+def replace_s(index,line):
+  if not (ord(line[index]) == ord('s') or ord(line[index]) == ord('S')):
+    return False
+  if index == len(line)-1:
+    return ord("0") <= ord(line[index-1]) and ord(line[index-1]) <= ord("9")
+  elif index == 0:
+    ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9")
+  else:
+    return ((ord("0") <= ord(line[index-1]) and ord(line[index-1]) <= ord("9"))
+        or (ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9")))
 
 def parse_receipt(image_name):
   receipt_text = image_to_text(image_name)
@@ -31,6 +40,9 @@ def parse_receipt(image_name):
       if should_be_period(index,line):
         line = line[0:index] + "." + line[index+1:]
         hasperiod = True
+      if replace_s(index,line):
+        line = line[0:index] + "5" + line[index+1:]
+        hasint = True
       elif ord("0") <= ord(line[index]) and ord(line[index]) <= ord("9"):
         hasint = True
       elif (ord("a") <= ord(line[index]) and ord(line[index]) <= ord("z") or
