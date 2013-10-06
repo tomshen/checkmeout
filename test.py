@@ -1,6 +1,10 @@
-from PIL import Image,ImageEnhance
-im = Image.open("uploads/test07.jpg")
-enhancer = ImageEnhance.Color(im)
-im = enhancer.enhance(0.0)
-im.save("uploads/test08.jpg")
+from PIL import Image
+im = Image.open('uploads/test02.jpg')
+(width,height) = im.size
+newwidth = width*2
+newheight = height*2
+print im.size
+im = im.resize((newwidth,newheight), Image.BILINEAR)
+print im.size
+im.save('uploads/test02.jpg')
 
