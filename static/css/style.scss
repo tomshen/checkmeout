@@ -3,10 +3,33 @@ $body-type: "american typewriter", "Courier New", monospace;
 
 
 $primary-color: #5CC353;
+$accent-color: #DAFAD6;
 
 $text-color: #0E0D16;
-$secondary-text-color: #DAFAD6;
+$secondary-text-color: $primary-color ;
 
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
 
 body {
 	color: $text-color;
@@ -14,16 +37,23 @@ body {
 	background: $primary-color;
 }
 
-.signin-container {
+.container{ 
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.container.is-hidden {
+	top: -100%;
+}
+
+
+.title-container {
 	text-align: center;
 	position: absolute;
 	top: 40%;
 	left: 0;
 	right: 0;
-}
-
-.is-hidden {
-	display:none;
 }
 
 .logo {
@@ -33,7 +63,60 @@ body {
 }
 
 .signin-button {
-	color: $secondary-text-color;
+	color: $accent-color;
 	font-size: 16px;
 	margin-top: 8px;
+}
+
+.verify-container, .friends-container, .claim-container, .total-container, .confirmation-container {
+	background-color: white;
+	color: $text-color;
+
+	> :first-child {
+		padding-top: 16px;
+	}
+	> :last-child {
+		padding-bottom: 16px;
+	}
+
+	> div {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+}
+
+.receipt-title {
+	font-family: $title-type;
+	font-size: 28px;
+	margin-bottom: 8px;
+}
+
+.receipt-item {
+	line-height: 1.5;
+	.item-name {
+		width: 200px;
+		float: left;
+	}
+	.item-cost {
+		float: right;
+		width: 80px;
+		text-align: right;
+	}
+
+	&.total {
+		background-color: #ddd;
+	}
+}
+
+.receipt-action {
+	font-family: $title-type;
+	font-size: 20px;
+	margin-top: 8px;
+	text-align:right;
+	color: $secondary-text-color;
+}
+
+.receipt-action:after {
+	content: "→";
 }
