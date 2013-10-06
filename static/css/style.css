@@ -18,7 +18,8 @@
 
 html, body {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  position: relative; }
 
 body {
   color: #0e0d16;
