@@ -32,7 +32,9 @@ body {
   position: absolute; }
 
 .is-hidden {
-  left: -100%;
+  left: -100%; }
+
+.is-hidden:not(.title-container, .picture-container) {
   transition: left 0.5s ease; }
 
 .signin-container {

@@ -46,9 +46,11 @@ body {
 
 .is-hidden {
 	left: -100%;
-	transition: left 0.5s ease;
 }
 
+.is-hidden:not(.title-container, .picture-container) {
+	transition: left 0.5s ease;
+}
 
 .signin-container {
 	text-align: center;
