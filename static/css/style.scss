@@ -26,7 +26,7 @@ $secondary-text-color: $primary-color ;
     *zoom: 1;
 }
 
-html, body {
+html, body, .content-container {
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -67,6 +67,7 @@ body {
 	color: $accent-color;
 	font-size: 16px;
 	margin-top: 8px;
+	text-decoration: none;
 }
 
 .verify-container, .friends-container, .claim-container, .total-container, .confirmation-container {
