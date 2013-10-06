@@ -45,7 +45,7 @@ body {
 }
 
 .container.is-hidden {
-	top: -100%;
+	left: -100%;
 }
 
 
@@ -63,17 +63,48 @@ body {
 	font-size: 36px;
 }
 
-.signin-button {
+.signin-button, .picture-submit {
 	color: $accent-color;
 	font-size: 16px;
 	margin-top: 8px;
 	text-decoration: none;
 }
 
-.picture-submit {
-	display: block;
-	color: $text-color;
-	text-decoration: none;
+.picture-label {
+	font-family: $title-type;
+	font-weight: 500;
+	font-size: 24px;
+}
+
+.file-container {
+    overflow: hidden;
+    position: relative;
+    height: 30px;
+}
+
+.file-container:before {
+	content: "click to upload file";
+}
+
+.file-container [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+    cursor: pointer;
+}
+
+.picture-container {
+	padding-top: 40%;
+	min-height: 60%;
+	text-align:center;
 }
 
 .verify-container, .friends-container, .claim-container, .total-container, .confirmation-container {

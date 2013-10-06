@@ -48,12 +48,14 @@
 
     <div class="picture-container container is-hidden" id="picture">
       <div class="picture-label">
-        Take a Picture of the Reciept
+        take a picture of the reciept
       </div>
       <form id="image-upload" enctype=multipart/form-data>
-        <input name="receipt" type="file" accept="image/*" capture="camera">
+        <div class="file-container">
+          <input name="receipt" type="file" accept="image/*" capture="camera">
+        </div>
         <a class="picture-submit stage-submit" href="#">
-          Submit picture
+          -&thinsp;submit Picture&thinsp;-
         </a>
       </form>
     </div>
