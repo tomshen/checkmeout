@@ -44,10 +44,9 @@ body {
 	position: absolute;
 }
 
-.container.is-hidden {
+.is-hidden {
 	left: -100%;
 	transition: left 0.5s ease;
-
 }
 
 
@@ -89,7 +88,7 @@ body {
 }
 
 .file-container.is-uploaded:before {
-	content: "picture uploaded";
+	content: "### picture uploaded ###";
 }
 
 .file-container [type=file] {
