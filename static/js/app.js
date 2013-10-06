@@ -184,6 +184,10 @@ function checkTotal(total, claimTotals, itemFriends) {
 
 function confirm(claimTotals) {
   $('#confirm').removeClass('is-hidden');
+  $('#confirm').click(function() {
+    location.reload();
+  });
+
   _.each(claimTotals, function (claim) {
     var note = JSON.stringify(_.pluck(claim.items, 'name'));
     venmo.pay(function (res) {

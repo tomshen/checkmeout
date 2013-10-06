@@ -32,7 +32,8 @@ body {
   position: absolute; }
 
 .container.is-hidden {
-  left: -100%; }
+  left: -100%;
+  transition: left 0.5s ease; }
 
 .signin-container {
   text-align: center;
@@ -155,3 +156,21 @@ body {
 .is-selected .friend-selected:before {
   content: "x";
   line-height: 0.9; }
+
+.receipt-subtitle {
+  font-family: "jubilat", sans-serif;
+  font-size: 20px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: #5cc353;
+  text-decoration: none;
+  display: block; }
+
+.claimed {
+  color: #5cc353; }
+
+.claimed .item-name:before {
+  content: "#"; }
+
+.confirmation-label:last-of-type {
+  color: #5cc353; }

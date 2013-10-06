@@ -46,6 +46,8 @@ body {
 
 .container.is-hidden {
 	left: -100%;
+	transition: left 0.5s ease;
+
 }
 
 
@@ -199,4 +201,26 @@ body {
 .is-selected .friend-selected:before {
 	content:"x";
 	line-height: 0.9;
+}
+
+.receipt-subtitle {
+	font-family: $title-type;
+	font-size: 20px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	color: $secondary-text-color;
+	text-decoration: none;
+	display: block;
+}
+
+.claimed {
+	color: $secondary-text-color;
+}
+
+.claimed .item-name:before {
+	content: "#";
+}
+
+.confirmation-label:last-of-type {
+	color: $secondary-text-color;
 }
