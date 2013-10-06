@@ -55,11 +55,14 @@ def parse_receipt(image_name):
   for line in needed_lines:
     tempitem = ""
     tempprice = 0
+    priceSet = False
     for index in xrange(len(line)):
       if (ord("a") <= ord(line[index]) and ord(line[index]) <= ord("z") or
             ord("A") <= ord(line[index]) and ord(line[index]) <= ord("Z")):
         tempitem += line[index]
       elif ord(line[index]) == ord("."):
+        if priceSet:
+          tempprice = 0
         right_digits_found = 0;
         while (right_digits_found + 1 + index < len(line) and 
             ord("0") <= ord(line[index + 1 +right_digits_found]) and
@@ -76,6 +79,7 @@ def parse_receipt(image_name):
           exp = price_search_left + right_digits_found - 1
           tempprice += int(line[index-price_search_left])*10**exp
           price_search_left += 1
+        priceSet = True
     result[count] = dict()
     result[count]["name"] = tempitem
     result[count]["price"] = tempprice
