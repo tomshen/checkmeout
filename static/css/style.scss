@@ -2,7 +2,7 @@ $title-type: "jubilat", sans-serif;
 $body-type: "american typewriter", "Courier New", monospace;
 
 
-$primary-color: #5CC353;
+$primary-color: #69BB62;
 $accent-color: #DAFAD6;
 
 $text-color: #0E0D16;
@@ -143,6 +143,10 @@ body {
 		float: right;
 		width: 80px;
 		text-align: right;
+	}
+
+	&.subtracting {
+		color: #C35353
 	}
 
 	&.total {

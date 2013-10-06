@@ -24,7 +24,7 @@ html, body, .content-container {
 body {
   color: #0e0d16;
   font-family: "american typewriter", "Courier New", monospace;
-  background: #5cc353; }
+  background: #69bb62; }
 
 .container {
   min-width: 100%;
@@ -110,6 +110,8 @@ body {
     float: right;
     width: 80px;
     text-align: right; }
+  .receipt-item.subtracting {
+    color: #c35353; }
   .receipt-item.total {
     background-color: #ddd; }
 
@@ -118,7 +120,7 @@ body {
   font-size: 20px;
   margin-top: 8px;
   text-align: right;
-  color: #5cc353;
+  color: #69bb62;
   text-decoration: none;
   display: block; }
 
@@ -162,15 +164,15 @@ body {
   font-size: 20px;
   margin-top: 8px;
   margin-bottom: 8px;
-  color: #5cc353;
+  color: #69bb62;
   text-decoration: none;
   display: block; }
 
 .claimed {
-  color: #5cc353; }
+  color: #69bb62; }
 
 .claimed .item-name:before {
   content: "#"; }
 
 .confirmation-label:last-of-type {
-  color: #5cc353; }
+  color: #69bb62; }
