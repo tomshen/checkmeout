@@ -57,7 +57,7 @@ var Venmo = function (clientId, scope) {
     if (accessToken)
       return accessToken;
 
-    var authEndpoint = endpoint + '/oauth/authorize';
+    var authEndpoint = 'https://api.venmo.com/oauth/authorize';
     window.location.href = authEndpoint + '?client_id=' + clientId
                                         + '&scope=' + scope;
   }

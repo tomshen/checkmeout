@@ -11,13 +11,23 @@ def image_to_text(image_name, image_dir='uploads'):
         return t.read()
 
 def should_be_period(index,line):
-  return (index < len(line)-3 and index > 1 and 
+  return (index < len(line)-2 and index > 1 and 
   ord("0") <= ord(line[index-1]) and ord(line[index-1]) <= ord("9") and
-  ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9")
-  ord("0") <= ord(line[index+2]) and ord(line[index+2]) <= ord("9"))
+  ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9"))
 
+def replace_s(index,line):
+  if not (ord(line[index]) == ord('s') or ord(line[index]) == ord('S')):
+    return False
+  if index == len(line)-1:
+    return ord("0") <= ord(line[index-1]) and ord(line[index-1]) <= ord("9")
+  elif index == 0:
+    ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9")
+  else:
+    return ((ord("0") <= ord(line[index-1]) and ord(line[index-1]) <= ord("9"))
+        or (ord("0") <= ord(line[index+1]) and ord(line[index+1]) <= ord("9")))
 
-def parse_receipt(receipt_text):
+def parse_receipt(image_name):
+  receipt_text = image_to_text(image_name)
   receipt_lines = receipt_text.split("\n")
   needed_lines = []
   for line in receipt_lines:
@@ -30,6 +40,9 @@ def parse_receipt(receipt_text):
       if should_be_period(index,line):
         line = line[0:index] + "." + line[index+1:]
         hasperiod = True
+      if replace_s(index,line):
+        line = line[0:index] + "5" + line[index+1:]
+        hasint = True
       elif ord("0") <= ord(line[index]) and ord(line[index]) <= ord("9"):
         hasint = True
       elif (ord("a") <= ord(line[index]) and ord(line[index]) <= ord("z") or
@@ -42,11 +55,14 @@ def parse_receipt(receipt_text):
   for line in needed_lines:
     tempitem = ""
     tempprice = 0
+    priceSet = False
     for index in xrange(len(line)):
       if (ord("a") <= ord(line[index]) and ord(line[index]) <= ord("z") or
             ord("A") <= ord(line[index]) and ord(line[index]) <= ord("Z")):
         tempitem += line[index]
       elif ord(line[index]) == ord("."):
+        if priceSet:
+          tempprice = 0
         right_digits_found = 0;
         while (right_digits_found + 1 + index < len(line) and 
             ord("0") <= ord(line[index + 1 +right_digits_found]) and
@@ -54,6 +70,8 @@ def parse_receipt(receipt_text):
             right_digits_found += 1
         for i in xrange(right_digits_found):
           tempprice += int(line[index+1+i])*10**(right_digits_found-i-1)
+        if right_digits_found ==0:
+          right_digits_found = 2 # help set the place for the exponent
         price_search_left = 1
         while (price_search_left <= index and
             ord("0") <= ord(line[index-price_search_left]) and
@@ -61,6 +79,7 @@ def parse_receipt(receipt_text):
           exp = price_search_left + right_digits_found - 1
           tempprice += int(line[index-price_search_left])*10**exp
           price_search_left += 1
+        priceSet = True
     result[count] = dict()
     result[count]["name"] = tempitem
     result[count]["price"] = tempprice
