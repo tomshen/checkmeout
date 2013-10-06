@@ -144,13 +144,13 @@
         their formatted "name", and a boolean "selected"
     -->
   <script type="text/template" id="template-venmo-friends">
-    <div class="receipt-title">
+    <div class="receipt-title"> ".id"
       Select Venmo Friends
     </div>
     <% for (var i = 0; i < venmoFriends.length; i++) { %>
 
       <% var venmoFriend = venmoFriends[i] %>
-      <div class="friend cf">
+      <div class="friend cf" data-user-id="<%= venmoFriend.id %>">
         <div class="friend-photo">
           <img src="<%= venmoFriend.profile_picture_url %>">
         </div>
