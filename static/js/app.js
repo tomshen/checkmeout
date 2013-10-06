@@ -15,7 +15,8 @@ function picture() {
   $('#picture').removeClass('is-hidden');
   $('#image-upload').onchange = function () {
     alert(this.value);
-  };​
+  }
+  
   $('.picture-submit').click(function () {
     $.ajax({
       url: '/upload',
