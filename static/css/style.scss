@@ -146,7 +146,7 @@ body {
 	}
 
 	&.subtracting {
-		color: #C35353
+		color: #C35353;
 	}
 
 	&.total {
@@ -208,13 +208,9 @@ body {
 }
 
 .receipt-subtitle {
-	font-family: $title-type;
-	font-size: 20px;
-	margin-top: 8px;
-	margin-bottom: 8px;
 	color: $secondary-text-color;
-	text-decoration: none;
-	display: block;
+	font-weight: 700;
+	line-height: 1.5;
 }
 
 .claimed {

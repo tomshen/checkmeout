@@ -111,7 +111,7 @@ body {
     width: 80px;
     text-align: right; }
   .receipt-item.subtracting {
-    color: #c35353; }
+    color: #C35353; }
   .receipt-item.total {
     background-color: #ddd; }
 
@@ -160,13 +160,9 @@ body {
   line-height: 0.9; }
 
 .receipt-subtitle {
-  font-family: "jubilat", sans-serif;
-  font-size: 20px;
-  margin-top: 8px;
-  margin-bottom: 8px;
   color: #69bb62;
-  text-decoration: none;
-  display: block; }
+  font-weight: 700;
+  line-height: 1.5; }
 
 .claimed {
   color: #69bb62; }
