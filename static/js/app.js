@@ -14,7 +14,7 @@ function signin() {
 function picture() {
   $('#picture').removeClass('is-hidden');
   $('#image-upload').change(function () {
-    alert(this.value);
+    $('#image-upload').addClass("is-uploaded")
   });
 
   $('.picture-submit').click(function () {

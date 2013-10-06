@@ -63,8 +63,11 @@ body {
   position: relative;
   height: 30px; }
 
-.file-container:before {
-  content: "click to upload file"; }
+.file-container:not(.is-uploaded):before {
+  content: "click to upload picture"; }
+
+.file-container.is-uploaded:before {
+  content: "picture uploaded"; }
 
 .file-container [type=file] {
   cursor: inherit;
