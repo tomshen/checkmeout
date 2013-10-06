@@ -31,10 +31,7 @@ body {
   min-height: 100%;
   position: absolute; }
 
-.is-hidden {
-  display: none; }
-
-.is-hidden.animatable {
+.container.is-hidden {
   left: -100%;
   transition: left 0.5s ease; }
 
