@@ -16,7 +16,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
   <!-- stops people from zooming -->
-  <meta name="viewport" content = "width = device-width, initial-scale = 2.3, user-scalable = no" />
+  <meta name="viewport" content = "width = device-width, initial-scale = 1, user-scalable = no" />  
 
   <!-- Typekit embed code -->
   <script type="text/javascript" src="//use.typekit.net/dpy8sot.js"></script>
@@ -103,20 +103,20 @@
     </div>
     <% for (var i = 0; i < items.length; i++) { %>
       <% var item = items[i]; %>
-      <div class="receipt-item">
+      <div class="receipt-item cf">
         <div class="item-name">
           <%= item.name %>
         </div>
         <div class="item-cost">
-          <%= item.cost %>
+          <%= item.price %>
         </div>
       </div>
     <% } %>
-    <div class="receipt-meta">
-      <div class="meta-title">
+    <div class="receipt-item total cf">
+      <div class="item-name">
         Total
       </div>
-      <div class="meta-value">
+      <div class="item-cost">
         <%= total %>
       </div>
     </div>
@@ -148,12 +148,12 @@
 
       <% var venmoFriend = venmoFriends[i] %>
       <% console.log(venmoFriend) %>
-      <div class="friend">
+      <div class="friend cf">
         <div class="friend-photo">
-          <img src="<%= venmoFriend.url %>">
+          <img src="<%= venmoFriend.profile_picture_url %>">
         </div>
         <div class="friend-name">
-          <%= venmoFriend.name %>
+          <%= venmoFriend.display_name %>
         </div>
         <div class="friend-selected <% if(venmoFriend.selected) print('is-selected') %> ">
         </div>
@@ -189,20 +189,20 @@
     </div>
     <% for (var i = 0; i < items.length; i++) { %>
       <% var item = items[i]; %>
-      <div class="receipt-item">
+      <div class="receipt-item cf">
         <div class="item-name">
           <%= item.name %>
         </div>
         <div class="item-cost">
-          <%= item.cost %>
+          <%= item.price %>
         </div>
       </div>
     <% }; %>
-    <div class="receipt-meta">
-      <div class="meta-title">
+    <div class="receipt-item total cf">
+      <div class="item-name">
         Total
       </div>
-      <div class="meta-value">
+      <div class="item-cost">
         <%= total %>
       </div>
     </div>
@@ -229,32 +229,32 @@
         "remainingTotal" the total balance remaining on the tab
     -->
   <script type="text/template" id="template-total">
-    <div class="receipt-meta">
-      <div class="meta-title">
+    <div class="receipt-item cf">
+      <div class="item-name">
         Total
       </div>
-      <div class="meta-value">
+      <div class="item-cost">
         <%= total %>
       </div>
     </div>
 
     <% for (var i = 0; i < claimTotals.length; i++) { %>
       <% var claim = claimTotals[i]; %>
-      <div class="receipt-meta">
-        <div class="meta-title">
+      <div class="receipt-item cf">
+        <div class="item-name">
           <%= claim.name %>
         </div>
-        <div class="meta-value">
-          <%= claim.cost %>
+        <div class="item-cost">
+          <%= claim.price %>
         </div>
       </div>
     <% }; %>
 
-    <div class="receipt-meta">
-      <div class="meta-title">
-        Balance Remaining
+    <div class="receipt-item cf">
+      <div class="item-name">
+        Balance Remaining 
       </div>
-      <div class="meta-value">
+      <div class="item-cost">
         <%= remainingTotal %>
       </div>
     </div>
