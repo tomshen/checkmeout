@@ -22,6 +22,7 @@ function picture() {
       type: 'POST',
       success: function (receipt) {
         $('#picture').addClass('is-hidden');
+        verify(receipt.items);
       }
     });
   });
@@ -29,7 +30,6 @@ function picture() {
 
 function verify(receipt) {
   $('#verify').removeClass('is-hidden');
-  console.log(receipt);
 }
 
 signin();
