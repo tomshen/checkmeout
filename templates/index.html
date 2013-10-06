@@ -108,7 +108,7 @@
           <%= item.name %>
         </div>
         <div class="item-cost">
-          <%= item.cost %>
+          <%= item.price %>
         </div>
       </div>
     <% } %>
@@ -150,10 +150,10 @@
       <% console.log(venmoFriend) %>
       <div class="friend cf">
         <div class="friend-photo">
-          <img src="<%= venmoFriend.url %>">
+          <img src="<%= venmoFriend.profile_picture_url %>">
         </div>
         <div class="friend-name">
-          <%= venmoFriend.name %>
+          <%= venmoFriend.display_name %>
         </div>
         <div class="friend-selected <% if(venmoFriend.selected) print('is-selected') %> ">
         </div>
@@ -194,7 +194,7 @@
           <%= item.name %>
         </div>
         <div class="item-cost">
-          <%= item.cost %>
+          <%= item.price %>
         </div>
       </div>
     <% }; %>
@@ -245,11 +245,11 @@
           <%= claim.name %>
         </div>
         <div class="item-cost">
-          <%= claim.cost %>
+          <%= claim.price %>
         </div>
       </div>
     <% }; %>
-    
+
     <div class="receipt-item cf">
       <div class="item-name">
         Balance Remaining 
