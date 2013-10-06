@@ -29,12 +29,11 @@ var Venmo = function (clientId, scope) {
 
   function post(path, params, success, failure) {
     failure = optionalArg(failure, _failure);
-
     params = serialize(params);
+
+    var http = new XMLHttpRequest();
     http.open('POST', path, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    http.setRequestHeader('Content-length', params.length);
-    http.setRequestHeader('Connection', 'close');
     http.onreadystatechange = function() {
       if (http.readyState === 4 && http.status === 200) {
         if (success) return success(http.responseText);

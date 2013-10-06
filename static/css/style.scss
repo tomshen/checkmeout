@@ -2,7 +2,7 @@ $title-type: "jubilat", sans-serif;
 $body-type: "american typewriter", "Courier New", monospace;
 
 
-$primary-color: #5CC353;
+$primary-color: #69BB62;
 $accent-color: #DAFAD6;
 
 $text-color: #0E0D16;
@@ -46,6 +46,8 @@ body {
 
 .container.is-hidden {
 	left: -100%;
+	transition: left 0.5s ease;
+
 }
 
 
@@ -143,6 +145,10 @@ body {
 		text-align: right;
 	}
 
+	&.subtracting {
+		color: #C35353
+	}
+
 	&.total {
 		background-color: #ddd;
 	}
@@ -180,7 +186,7 @@ body {
 
 .friend-name {
 	line-height: 2;
-	width: 232px;
+	width: 220px;
 	float: left;
 }
 
@@ -199,4 +205,26 @@ body {
 .is-selected .friend-selected:before {
 	content:"x";
 	line-height: 0.9;
+}
+
+.receipt-subtitle {
+	font-family: $title-type;
+	font-size: 20px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	color: $secondary-text-color;
+	text-decoration: none;
+	display: block;
+}
+
+.claimed {
+	color: $secondary-text-color;
+}
+
+.claimed .item-name:before {
+	content: "#";
+}
+
+.confirmation-label:last-of-type {
+	color: $secondary-text-color;
 }

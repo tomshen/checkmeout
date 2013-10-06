@@ -24,7 +24,7 @@ html, body, .content-container {
 body {
   color: #0e0d16;
   font-family: "american typewriter", "Courier New", monospace;
-  background: #5cc353; }
+  background: #69bb62; }
 
 .container {
   min-width: 100%;
@@ -32,7 +32,8 @@ body {
   position: absolute; }
 
 .container.is-hidden {
-  left: -100%; }
+  left: -100%;
+  transition: left 0.5s ease; }
 
 .signin-container {
   text-align: center;
@@ -109,6 +110,8 @@ body {
     float: right;
     width: 80px;
     text-align: right; }
+  .receipt-item.subtracting {
+    color: #c35353; }
   .receipt-item.total {
     background-color: #ddd; }
 
@@ -117,7 +120,7 @@ body {
   font-size: 20px;
   margin-top: 8px;
   text-align: right;
-  color: #5cc353;
+  color: #69bb62;
   text-decoration: none;
   display: block; }
 
@@ -139,7 +142,7 @@ body {
 
 .friend-name {
   line-height: 2;
-  width: 232px;
+  width: 220px;
   float: left; }
 
 .friend-selected {
@@ -155,3 +158,21 @@ body {
 .is-selected .friend-selected:before {
   content: "x";
   line-height: 0.9; }
+
+.receipt-subtitle {
+  font-family: "jubilat", sans-serif;
+  font-size: 20px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: #69bb62;
+  text-decoration: none;
+  display: block; }
+
+.claimed {
+  color: #69bb62; }
+
+.claimed .item-name:before {
+  content: "#"; }
+
+.confirmation-label:last-of-type {
+  color: #69bb62; }

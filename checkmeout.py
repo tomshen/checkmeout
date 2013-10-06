@@ -37,9 +37,9 @@ def venmo_user(user_id):
 @app.route('/venmo/users/<user_id>/friends')
 def venmo_user_friends(user_id):
     return jsonify({ 'friends': Venmo(request.args['access_token']).friends(user_id) })
-@app.route('/venmo/pay', methods=['POST'])
+@app.route('/venmo/payments', methods=['POST'])
 def venmo_pay():
-    return jsonify(Venmo(request.args['access_token'].pay(request.args)))
+    return jsonify(Venmo(request.form['access_token']).pay(request.form['user_id'], request.form['note'], request.form['amount']))
 
 if __name__ == '__main__':
     app.run()
