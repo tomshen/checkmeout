@@ -165,7 +165,7 @@ body {
 	margin-top: 4px;
 }
 
-.friend-selected.is-selected:before {
+.is-selected .friend-selected:before {
 	content:"x";
 	line-height: 0.9;
 }
