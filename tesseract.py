@@ -56,10 +56,19 @@ def parse_receipt(image_name):
     tempitem = ""
     tempprice = 0
     priceSet = False
+    item_written = False
     for index in xrange(len(line)):
       if (ord("a") <= ord(line[index]) and ord(line[index]) <= ord("z") or
-            ord("A") <= ord(line[index]) and ord(line[index]) <= ord("Z")):
-        tempitem += line[index]
+            ord("A") <= ord(line[index]) and ord(line[index]) <= ord("Z")
+            and not item_written):
+        item_written = True
+        print "called tho"
+        for temp_index in xrange(index,len(line)):
+          if (ord('0') <= ord(line[temp_index]) <= ord('9')):
+            print "got to dis part doe"
+            break
+          else:
+            tempitem += line[temp_index]
       elif ord(line[index]) == ord("."):
         if priceSet:
           tempprice = 0
